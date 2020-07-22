@@ -1,0 +1,13 @@
+# https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[package]
+name                    = "rust-opendingux-test"
+version                 = "0.1.0"
+authors                 = ["MaulingMonkey <git@maulingmonkey.com>"]
+edition                 = "2018"
+publish                 = false
+
+[dependencies]
+# latest published glutin 0.24.1 uses libloading 0.5.1 uses cc requires a C++ cross compiler
+# specified revision here, however, upgrades to libloading 0.6 which removes the cc dependency
+glutin                  = { git = "https://github.com/rust-windowing/glutin", rev = "4432ea7070fb1c04c950070c5f44c9dd790c186d" }

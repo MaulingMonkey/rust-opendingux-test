@@ -1,0 +1,10 @@
+[target.mipsel-unknown-linux-musl]
+linker = "mipsel-linux-gcc"
+rustflags = [
+    # NOTE: These need to be linked pretty late to resolve for the rust stdlib, hence why they're in here instead of in main.rs
+    "-C", "link-args=-lpthread",
+    "-C", "link-args=-ldl",
+]
+
+[target.mipsel-unknown-linux-gnu]
+linker = "mipsel-linux-gcc"

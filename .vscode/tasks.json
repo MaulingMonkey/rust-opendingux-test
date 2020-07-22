@@ -1,0 +1,113 @@
+{
+    "version": "2.0.0",
+    "problemMatcher": "$rustc",
+    "type": "shell",
+    "presentation": {
+        "clear": true,
+        "panel": "shared",
+    },
+    "options": {
+        "cwd": "${workspaceFolder}",
+        "env": { "RUST_BACKTRACE": "1" },
+    },
+    "tasks": [
+        {
+            "label": "default",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "install • all",
+                "all • all • all",
+            ],
+            "group": { "kind": "build", "isDefault": true }
+        },
+
+        {
+            "label": "install • all",
+            "dependsOn": [
+                "install • gcw0",
+                "install • targets",
+                "install • packages",
+            ]
+        },
+        {
+            "label":        "install • gcw0",
+            "linux":        { "command": "./scripts/install-gcw0.sh" },
+            "windows":      { "command": "bash --login -c \"./scripts/install-gcw0.sh\"" },
+            "presentation": { "group": "install" },
+        },
+        {
+            "label":        "install • targets",
+            "linux":        { "command": "./scripts/install-targets.sh" },
+            "windows":      { "command": "bash --login -c \"./scripts/install-targets.sh\"" },
+            "presentation": { "group": "install" },
+        },
+        {
+            "label":        "install • packages",
+            "linux":        { "command": "cargo fetch" },
+            "windows":      { "command": "bash --login -c \"cargo fetch\"" },
+            "presentation": { "group": "install" },
+        },
+
+        {
+            "label": "all • all • all",
+            "dependsOn": [
+                //"stable • debug • gnu",   // missing symbols: `__stack_chk_fail`, `__stack_chk_guard`, `__snprintf_chk`
+                "stable • debug • musl",
+                //"stable • release • gnu", // missing symbols: `__stack_chk_fail`, `__stack_chk_guard`, `__snprintf_chk`
+                "stable • release • musl",
+                "nightly • debug • gnu",
+                "nightly • debug • musl",
+                "nightly • release • gnu",
+                "nightly • release • musl",
+            ]
+        },
+        {
+            "label": "stable • debug • gnu",
+            "linux":        { "command": "PATH=/opt/gcw0-toolchain/usr/bin:${PATH} cargo +stable build --offline --target-dir=target/stable-gnu --target=mipsel-unknown-linux-gnu --package rust-opendingux-test" },
+            "windows":      { "command": "bash --login -c \"PATH=/opt/gcw0-toolchain/usr/bin:${PATH} cargo +stable build --offline --target-dir=target/stable-gnu --target=mipsel-unknown-linux-gnu --package rust-opendingux-test" },
+            "presentation": { "group": "build" }
+        },
+        {
+            "label": "stable • debug • musl",
+            "linux":        { "command": "PATH=/opt/gcw0-toolchain/usr/bin:${PATH} cargo +stable build --offline --target-dir=target/stable-musl --target=mipsel-unknown-linux-musl --package rust-opendingux-test" },
+            "windows":      { "command": "bash --login -c \"PATH=/opt/gcw0-toolchain/usr/bin:${PATH} cargo +stable build --offline --target-dir=target/stable-musl --target=mipsel-unknown-linux-musl --package rust-opendingux-test" },
+            "presentation": { "group": "build" }
+        },
+        {
+            "label": "stable • release • gnu",
+            "linux":        { "command": "PATH=/opt/gcw0-toolchain/usr/bin:${PATH} cargo +stable build --offline --target-dir=target/stable-gnu --target=mipsel-unknown-linux-gnu --release --package rust-opendingux-test" },
+            "windows":      { "command": "bash --login -c \"PATH=/opt/gcw0-toolchain/usr/bin:${PATH} cargo +stable build --offline --target-dir=target/stable-gnu --target=mipsel-unknown-linux-gnu --release --package rust-opendingux-test" },
+            "presentation": { "group": "build" }
+        },
+        {
+            "label": "stable • release • musl",
+            "linux":        { "command": "PATH=/opt/gcw0-toolchain/usr/bin:${PATH} cargo +stable build --offline --target-dir=target/stable-musl --target=mipsel-unknown-linux-musl --release --package rust-opendingux-test" },
+            "windows":      { "command": "bash --login -c \"PATH=/opt/gcw0-toolchain/usr/bin:${PATH} cargo +stable build --offline --target-dir=target/stable-musl --target=mipsel-unknown-linux-musl --release --package rust-opendingux-test" },
+            "presentation": { "group": "build" }
+        },
+        {
+            "label": "nightly • debug • gnu",
+            "linux":        { "command": "PATH=/opt/gcw0-toolchain/usr/bin:${PATH} cargo +nightly build --offline --target-dir=target/nightly-gnu --target=mipsel-unknown-linux-gnu --package rust-opendingux-test" },
+            "windows":      { "command": "bash --login -c \"PATH=/opt/gcw0-toolchain/usr/bin:${PATH} cargo +nightly build --offline --target-dir=target/nightly-gnu --target=mipsel-unknown-linux-gnu --package rust-opendingux-test" },
+            "presentation": { "group": "build" }
+        },
+        {
+            "label": "nightly • debug • musl",
+            "linux":        { "command": "PATH=/opt/gcw0-toolchain/usr/bin:${PATH} cargo +nightly build --offline --target-dir=target/nightly-musl --target=mipsel-unknown-linux-musl --package rust-opendingux-test" },
+            "windows":      { "command": "bash --login -c \"PATH=/opt/gcw0-toolchain/usr/bin:${PATH} cargo +nightly build --offline --target-dir=target/nightly-musl --target=mipsel-unknown-linux-musl --package rust-opendingux-test" },
+            "presentation": { "group": "build" }
+        },
+        {
+            "label": "nightly • release • gnu",
+            "linux":        { "command": "PATH=/opt/gcw0-toolchain/usr/bin:${PATH} cargo +nightly build --offline --target-dir=target/nightly-gnu --target=mipsel-unknown-linux-gnu --release --package rust-opendingux-test" },
+            "windows":      { "command": "bash --login -c \"PATH=/opt/gcw0-toolchain/usr/bin:${PATH} cargo +nightly build --offline --target-dir=target/nightly-gnu --target=mipsel-unknown-linux-gnu --release --package rust-opendingux-test" },
+            "presentation": { "group": "build" }
+        },
+        {
+            "label": "nightly • release • musl",
+            "linux":        { "command": "PATH=/opt/gcw0-toolchain/usr/bin:${PATH} cargo +nightly build --offline --target-dir=target/nightly-musl --target=mipsel-unknown-linux-musl --release --package rust-opendingux-test" },
+            "windows":      { "command": "bash --login -c \"PATH=/opt/gcw0-toolchain/usr/bin:${PATH} cargo +nightly build --offline --target-dir=target/nightly-musl --target=mipsel-unknown-linux-musl --release --package rust-opendingux-test" },
+            "presentation": { "group": "build" }
+        },
+    ],
+}
