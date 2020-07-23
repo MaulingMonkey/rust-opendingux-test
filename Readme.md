@@ -4,22 +4,25 @@ I got my hands on a RG350M - a portable, MIPS32, Linux based handheld portable u
 [OpenDingux](https://wiki.dingoonity.org/index.php?title=OpenDingux:About) distribution - for
 the purpouse of low-spec handheld Rust game development without signing a bunch of NDAs.
 
+![Minimum Viable Product](screenshots/mvp.png)
+
 # Quick Start
 
-1. Install [rustup](https://rustup.rs/) on Linux (Windows WSL OK)
-2. Install [VS Code](https://code.visualstudio.com/)
-3. Open this directory in VS Code
-4. Optionally install workspace recommended VS Code extensions
-5. Run the `default` build task (`Ctrl`+`Shift`+`B`)
-6. ???
-7. Profit
+1.  Install [rustup] on Linux (Windows WSL OK)
+2.  Install [VS Code](https://code.visualstudio.com/)
+3.  Open this directory in VS Code
+4.  Optionally install workspace recommended VS Code extensions
+5.  Run the `default` build task (`Ctrl`+`Shift`+`B`).<br>
+    <b>May require `sudo` password on first run</b> (to auto-install dependencies)
+6.  Copy `target/package.opk` into your device SD card's `APPS` folder
+7.  See the launcher icons in the new `rust` category
+8.  Profit!
 
-TODO:
+## Installed Dependencies
 
-- [ ] Create basic GL clear color demo
-- [ ] Script creation of squashfs
-- [ ] Test deploy instructions in lieu of 6/7
-
+* <code>/opt/gcw0-toolchain</code> from http://www.gcw-zero.com/files/opendingux-gcw0-toolchain.2014-08-20.tar.bz2
+* <code>rustup toolchain install <u>nightly-2020-06-15</u> --component <u>rust-src</u> --profile=minimal</code>
+* <code>cargo install [xargo] --version "^0.3"</code>
 
 ## License
 
@@ -35,3 +38,8 @@ at your option.
 Unless you explicitly state otherwise, any contribution intentionally submitted
 for inclusion in the work by you, as defined in the Apache-2.0 license, shall be
 dual licensed as above, without any additional terms or conditions.
+
+
+
+[rustup]:       https://rustup.rs/
+[xargo]:        https://github.com/japaric/xargo
