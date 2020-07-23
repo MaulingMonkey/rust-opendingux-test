@@ -77,6 +77,12 @@ rustc +nightly -Z unstable-options --print target-spec-json --target=mipsel-unkn
 * https://rust-embedded.github.io/embedonomicon/custom-target.html
 * https://doc.rust-lang.org/rustc/targets/custom.html
 
+# OpenDingux Toolchains
+
+* http://www.gcw-zero.com/develop
+* http://www.gcw-zero.com/updates
+* https://boards.dingoonity.org/gcw-development/gcw-zero-toolchain-for-windows-(cygwin)-2013-10-04/
+
 ## RG350M
 
 * CPU: Jz4770 https://en.wikipedia.org/wiki/Ingenic_Semiconductor
@@ -84,3 +90,14 @@ rustc +nightly -Z unstable-options --print target-spec-json --target=mipsel-unkn
 ## Unrelated
 
 * Target Runners: https://doc.rust-lang.org/cargo/reference/config.html#targettriplerunner
+
+## OpenDinux OpenGL ES 2 Support
+
+* http://www.gcw-zero.com/files/etnaviv-2013-10-04.html
+* http://www.gcw-zero.com/updates
+* https://github.com/laanwj/mesatest_gles
+* https://github.com/laanwj/mesatest_gles/tree/master/Common
+* https://github.com/laanwj/mesatest_gles/blob/master/Common/esUtil.c
+* https://www.khronos.org/registry/EGL/sdk/docs/man/html/eglIntro.xhtml
+* https://www.khronos.org/registry/EGL/specs/eglspec.1.4.pdf
+* https://docs.rs/egl/0.2.7/egl/
