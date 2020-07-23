@@ -152,7 +152,7 @@
         {
             "label":        "deploy",
             "windows":      { "command": "scripts\\deploy" },
-            "presentation": { "group": "package" },
+            "presentation": { "group": "deploy" },
         },
     ],
 }

@@ -88,7 +88,7 @@ version = "0.3.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0ced0551234e87afee12411d535648dd89d2e7f34c78b753395567aff3d447ff"
 dependencies = [
- "libc 0.2.73",
+ "libc",
 ]
 
 [[package]]
@@ -111,7 +111,7 @@ dependencies = [
  "core-foundation",
  "core-graphics",
  "foreign-types",
- "libc 0.2.73",
+ "libc",
  "objc",
 ]
 
@@ -122,7 +122,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "57d24c7a13c43e870e37c1556b74555437870a04514f7685f5b354e090567171"
 dependencies = [
  "core-foundation-sys",
- "libc 0.2.73",
+ "libc",
 ]
 
 [[package]]
@@ -140,7 +140,7 @@ dependencies = [
  "bitflags",
  "core-foundation",
  "foreign-types",
- "libc 0.2.73",
+ "libc",
 ]
 
 [[package]]
@@ -152,7 +152,7 @@ dependencies = [
  "cfg-if",
  "core-foundation-sys",
  "core-graphics",
- "libc 0.2.73",
+ "libc",
  "objc",
 ]
 
@@ -189,13 +189,13 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9ea835d29036a4087793836fa931b08837ad5e957da9e23886b29586fb9b6650"
 
 [[package]]
-name = "egl"
-version = "0.2.7"
+name = "egli"
+version = "0.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a373bc9844200b1ff15bd1b245931d1c20d09d06e4ec09f361171f29a4b0752d"
+checksum = "8713355fe0618276bb5a225b115335bca1bfe0848f71fcb7eb27fa0c971bb378"
 dependencies = [
- "khronos",
- "libc 0.2.73",
+ "bitflags",
+ "libc",
 ]
 
 [[package]]
@@ -344,7 +344,7 @@ version = "0.1.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b2b3ea6ff95e175473f8ffe6a7eb7c00d054240321b84c57051175fe3c1e075e"
 dependencies = [
- "libc 0.2.73",
+ "libc",
 ]
 
 [[package]]
@@ -364,15 +364,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "khronos"
-version = "0.1.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c0711aaa80e6ba6eb1fa8978f1f46bfcb38ceb2f3f33f3736efbff39dac89f50"
-dependencies = [
- "libc 0.1.12",
-]
-
-[[package]]
 name = "khronos_api"
 version = "3.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -389,12 +380,6 @@ name = "lazycell"
 version = "1.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b294d6fa9ee409a054354afc4352b0b9ef7ca222c69b8812cbea9e7d2bf3783f"
-
-[[package]]
-name = "libc"
-version = "0.1.12"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e32a70cf75e5846d53a673923498228bbec6a8624708a9ea5645f075d6276122"
 
 [[package]]
 name = "libc"
@@ -454,7 +439,7 @@ version = "0.0.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "62bb907fe88d54d8d9ce32a3cceab4218ed2f6b7d35617cafe9adf84e43919cb"
 dependencies = [
- "libc 0.2.73",
+ "libc",
 ]
 
 [[package]]
@@ -469,7 +454,7 @@ version = "0.7.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6585fd95e7bb50d6cc31e20d4cf9afb4e2ba16c5846fc76793f11218da9c475b"
 dependencies = [
- "libc 0.2.73",
+ "libc",
  "winapi 0.3.9",
 ]
 
@@ -484,7 +469,7 @@ dependencies = [
  "fuchsia-zircon-sys",
  "iovec",
  "kernel32-sys",
- "libc 0.2.73",
+ "libc",
  "log",
  "miow",
  "net2",
@@ -535,7 +520,7 @@ checksum = "d1730ee2e3de41c3321160a6da815f008c4006d71b095880ea50e17cf52332b8"
 dependencies = [
  "android_log-sys",
  "lazy_static",
- "libc 0.2.73",
+ "libc",
  "log",
  "ndk",
  "ndk-sys",
@@ -554,7 +539,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2ba7c918ac76704fb42afcbbb43891e72731f3dcca3bef2a19786297baf14af7"
 dependencies = [
  "cfg-if",
- "libc 0.2.73",
+ "libc",
  "winapi 0.3.9",
 ]
 
@@ -567,7 +552,7 @@ dependencies = [
  "bitflags",
  "cc",
  "cfg-if",
- "libc 0.2.73",
+ "libc",
  "void",
 ]
 
@@ -647,7 +632,7 @@ checksum = "d58c7c768d4ba344e3e8d72518ac13e259d7c7ade24167003b8488e10b6740a3"
 dependencies = [
  "cfg-if",
  "cloudabi",
- "libc 0.2.73",
+ "libc",
  "redox_syscall",
  "smallvec",
  "winapi 0.3.9",
@@ -716,7 +701,7 @@ version = "0.3.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0a441a7a6c80ad6473bd4b74ec1c9a4c951794285bf941c2126f607c72e48211"
 dependencies = [
- "libc 0.2.73",
+ "libc",
 ]
 
 [[package]]
@@ -729,7 +714,7 @@ checksum = "41cc0f7e4d5d4544e8861606a285bb08d3e70712ccc7d2b84d7c0ccfaf4b05ce"
 name = "rust-opendingux-test"
 version = "0.1.0"
 dependencies = [
- "egl",
+ "egli",
  "gl",
  "glutin",
 ]
@@ -782,7 +767,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5a9e7e0f2bfae24d8a5b5a66c5b257a83c7412304311512a0c054cd5e619da11"
 dependencies = [
  "lazy_static",
- "libc 0.2.73",
+ "libc",
 ]
 
 [[package]]
@@ -880,7 +865,7 @@ dependencies = [
  "bitflags",
  "calloop",
  "downcast-rs",
- "libc 0.2.73",
+ "libc",
  "mio",
  "nix",
  "wayland-commons",
@@ -988,7 +973,7 @@ dependencies = [
  "dispatch",
  "instant",
  "lazy_static",
- "libc 0.2.73",
+ "libc",
  "log",
  "mio",
  "mio-extras",
@@ -1022,7 +1007,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2bf981e3a5b3301209754218f962052d4d9ee97e478f4d26d4a6eced34c1fef8"
 dependencies = [
  "lazy_static",
- "libc 0.2.73",
+ "libc",
  "maybe-uninit",
  "pkg-config",
 ]
