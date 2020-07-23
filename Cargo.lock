@@ -220,10 +220,30 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3dcaa9ae7725d12cdb85b3ad99a434db70b468c09ded17e012d86b5c1010f7a7"
 
 [[package]]
+name = "gl"
+version = "0.14.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a94edab108827d67608095e269cf862e60d920f144a5026d3dbcfd8b877fb404"
+dependencies = [
+ "gl_generator 0.14.0",
+]
+
+[[package]]
 name = "gl_generator"
 version = "0.13.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ca98bbde17256e02d17336a6bdb5a50f7d0ccacee502e191d3e3d0ec2f96f84a"
+dependencies = [
+ "khronos_api",
+ "log",
+ "xml-rs",
+]
+
+[[package]]
+name = "gl_generator"
+version = "0.14.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1a95dfc23a2b4a9a2f5ab41d194f8bfda3cabec42af4e39f08c339eb2a0c124d"
 dependencies = [
  "khronos_api",
  "log",
@@ -261,7 +281,7 @@ name = "glutin_egl_sys"
 version = "0.1.4"
 source = "git+https://github.com/rust-windowing/glutin?rev=4432ea7070fb1c04c950070c5f44c9dd790c186d#4432ea7070fb1c04c950070c5f44c9dd790c186d"
 dependencies = [
- "gl_generator",
+ "gl_generator 0.13.1",
  "winapi 0.3.9",
 ]
 
@@ -275,7 +295,7 @@ name = "glutin_gles2_sys"
 version = "0.1.4"
 source = "git+https://github.com/rust-windowing/glutin?rev=4432ea7070fb1c04c950070c5f44c9dd790c186d#4432ea7070fb1c04c950070c5f44c9dd790c186d"
 dependencies = [
- "gl_generator",
+ "gl_generator 0.13.1",
  "objc",
 ]
 
@@ -284,7 +304,7 @@ name = "glutin_glx_sys"
 version = "0.1.6"
 source = "git+https://github.com/rust-windowing/glutin?rev=4432ea7070fb1c04c950070c5f44c9dd790c186d#4432ea7070fb1c04c950070c5f44c9dd790c186d"
 dependencies = [
- "gl_generator",
+ "gl_generator 0.13.1",
  "x11-dl",
 ]
 
@@ -293,7 +313,7 @@ name = "glutin_wgl_sys"
 version = "0.1.4"
 source = "git+https://github.com/rust-windowing/glutin?rev=4432ea7070fb1c04c950070c5f44c9dd790c186d#4432ea7070fb1c04c950070c5f44c9dd790c186d"
 dependencies = [
- "gl_generator",
+ "gl_generator 0.13.1",
 ]
 
 [[package]]
@@ -668,6 +688,7 @@ checksum = "41cc0f7e4d5d4544e8861606a285bb08d3e70712ccc7d2b84d7c0ccfaf4b05ce"
 name = "rust-opendingux-test"
 version = "0.1.0"
 dependencies = [
+ "gl",
  "glutin",
 ]
 
