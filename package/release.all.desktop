@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=RustTest: Release
+Comment=A simple red screen to test GLES2
+Categories=rust;games;
+Icon=rust-opendingux-test
+Terminal=true
+Exec=rust-opendingux-test.release

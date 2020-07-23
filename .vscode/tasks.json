@@ -18,6 +18,7 @@
                 "install • all",
                 "cargo check",
                 "all • all • all",
+                "package",
             ],
             "group": { "kind": "build", "isDefault": true }
         },
@@ -137,6 +138,15 @@
             "linux":        { "command": "RUST_TARGET_PATH=$(pwd) RUSTUP_TOOLCHAIN=nightly-2020-06-15 xargo build --offline --target-dir=target/nightly-uclibc --target=mipsel-gcw0-linux-uclibc --release --package rust-opendingux-test" },
             "windows":      { "command": "bash --login -c \"RUST_TARGET_PATH=$(pwd) RUSTUP_TOOLCHAIN=nightly-2020-06-15 xargo build --offline --target-dir=target/nightly-uclibc --target=mipsel-gcw0-linux-uclibc --release --package rust-opendingux-test" },
             "presentation": { "group": "build" },
+        },
+
+
+
+        {
+            "label":        "package",
+            "linux":        { "command": "./scripts/package.sh" },
+            "windows":      { "command": "bash --login -c \"./scripts/package.sh\"" },
+            "presentation": { "group": "package" },
         },
     ],
 }

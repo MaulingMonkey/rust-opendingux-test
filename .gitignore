@@ -1,4 +1,6 @@
 /target
 /gcw0-stubs/*.a
 /gcw0-stubs/*.o
-opendingux-gcw0-*.tar.bz2
+/package/rust-opendingux-test.debug
+/package/rust-opendingux-test.release
+/opendingux-gcw0-*.tar.bz2

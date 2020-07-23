@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 echo "Checking toolchains..."
 # nightly rust-src currently (7/22/2020) fails to untar due to Symlinks, so use nightly-2020-06-15 (~stable 1.45) instead
 # rust-src is necessary for xargo to build core/std for our custom mipsel-gcw0-linux-uclibc target
