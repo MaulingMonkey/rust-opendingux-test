@@ -88,7 +88,7 @@ version = "0.3.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0ced0551234e87afee12411d535648dd89d2e7f34c78b753395567aff3d447ff"
 dependencies = [
- "libc",
+ "libc 0.2.73",
 ]
 
 [[package]]
@@ -111,7 +111,7 @@ dependencies = [
  "core-foundation",
  "core-graphics",
  "foreign-types",
- "libc",
+ "libc 0.2.73",
  "objc",
 ]
 
@@ -122,7 +122,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "57d24c7a13c43e870e37c1556b74555437870a04514f7685f5b354e090567171"
 dependencies = [
  "core-foundation-sys",
- "libc",
+ "libc 0.2.73",
 ]
 
 [[package]]
@@ -140,7 +140,7 @@ dependencies = [
  "bitflags",
  "core-foundation",
  "foreign-types",
- "libc",
+ "libc 0.2.73",
 ]
 
 [[package]]
@@ -152,7 +152,7 @@ dependencies = [
  "cfg-if",
  "core-foundation-sys",
  "core-graphics",
- "libc",
+ "libc 0.2.73",
  "objc",
 ]
 
@@ -179,7 +179,7 @@ version = "0.4.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b11f15d1e3268f140f68d390637d5e76d849782d971ae7063e0da69fe9709a76"
 dependencies = [
- "libloading",
+ "libloading 0.6.2",
 ]
 
 [[package]]
@@ -187,6 +187,16 @@ name = "downcast-rs"
 version = "1.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9ea835d29036a4087793836fa931b08837ad5e957da9e23886b29586fb9b6650"
+
+[[package]]
+name = "egl"
+version = "0.2.7"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a373bc9844200b1ff15bd1b245931d1c20d09d06e4ec09f361171f29a4b0752d"
+dependencies = [
+ "khronos",
+ "libc 0.2.73",
+]
 
 [[package]]
 name = "foreign-types"
@@ -253,7 +263,8 @@ dependencies = [
 [[package]]
 name = "glutin"
 version = "0.24.1"
-source = "git+https://github.com/rust-windowing/glutin?rev=4432ea7070fb1c04c950070c5f44c9dd790c186d#4432ea7070fb1c04c950070c5f44c9dd790c186d"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9a9666c8fd9afd008f6559e2468c35e11aad1d110d525bb3b354e4138ec0e20f"
 dependencies = [
  "android_glue",
  "cgl",
@@ -266,7 +277,7 @@ dependencies = [
  "glutin_glx_sys",
  "glutin_wgl_sys",
  "lazy_static",
- "libloading",
+ "libloading 0.5.2",
  "log",
  "objc",
  "osmesa-sys",
@@ -279,7 +290,8 @@ dependencies = [
 [[package]]
 name = "glutin_egl_sys"
 version = "0.1.4"
-source = "git+https://github.com/rust-windowing/glutin?rev=4432ea7070fb1c04c950070c5f44c9dd790c186d#4432ea7070fb1c04c950070c5f44c9dd790c186d"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "772edef3b28b8ad41e4ea202748e65eefe8e5ffd1f4535f1219793dbb20b3d4c"
 dependencies = [
  "gl_generator 0.13.1",
  "winapi 0.3.9",
@@ -288,12 +300,14 @@ dependencies = [
 [[package]]
 name = "glutin_emscripten_sys"
 version = "0.1.1"
-source = "git+https://github.com/rust-windowing/glutin?rev=4432ea7070fb1c04c950070c5f44c9dd790c186d#4432ea7070fb1c04c950070c5f44c9dd790c186d"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "80de4146df76e8a6c32b03007bc764ff3249dcaeb4f675d68a06caf1bac363f1"
 
 [[package]]
 name = "glutin_gles2_sys"
 version = "0.1.4"
-source = "git+https://github.com/rust-windowing/glutin?rev=4432ea7070fb1c04c950070c5f44c9dd790c186d#4432ea7070fb1c04c950070c5f44c9dd790c186d"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "07e853d96bebcb8e53e445225c3009758c6f5960d44f2543245f6f07b567dae0"
 dependencies = [
  "gl_generator 0.13.1",
  "objc",
@@ -302,7 +316,8 @@ dependencies = [
 [[package]]
 name = "glutin_glx_sys"
 version = "0.1.6"
-source = "git+https://github.com/rust-windowing/glutin?rev=4432ea7070fb1c04c950070c5f44c9dd790c186d#4432ea7070fb1c04c950070c5f44c9dd790c186d"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "08c243de74d6cf5ea100c788826d2fb9319de315485dd4b310811a663b3809c3"
 dependencies = [
  "gl_generator 0.13.1",
  "x11-dl",
@@ -311,7 +326,8 @@ dependencies = [
 [[package]]
 name = "glutin_wgl_sys"
 version = "0.1.4"
-source = "git+https://github.com/rust-windowing/glutin?rev=4432ea7070fb1c04c950070c5f44c9dd790c186d#4432ea7070fb1c04c950070c5f44c9dd790c186d"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a93dba7ee3a0feeac0f437141ff25e71ce2066bcf1a706acab1559ffff94eb6a"
 dependencies = [
  "gl_generator 0.13.1",
 ]
@@ -328,7 +344,7 @@ version = "0.1.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b2b3ea6ff95e175473f8ffe6a7eb7c00d054240321b84c57051175fe3c1e075e"
 dependencies = [
- "libc",
+ "libc 0.2.73",
 ]
 
 [[package]]
@@ -345,6 +361,15 @@ checksum = "7507624b29483431c0ba2d82aece8ca6cdba9382bff4ddd0f7490560c056098d"
 dependencies = [
  "winapi 0.2.8",
  "winapi-build",
+]
+
+[[package]]
+name = "khronos"
+version = "0.1.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c0711aaa80e6ba6eb1fa8978f1f46bfcb38ceb2f3f33f3736efbff39dac89f50"
+dependencies = [
+ "libc 0.1.12",
 ]
 
 [[package]]
@@ -367,9 +392,25 @@ checksum = "b294d6fa9ee409a054354afc4352b0b9ef7ca222c69b8812cbea9e7d2bf3783f"
 
 [[package]]
 name = "libc"
+version = "0.1.12"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e32a70cf75e5846d53a673923498228bbec6a8624708a9ea5645f075d6276122"
+
+[[package]]
+name = "libc"
 version = "0.2.73"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "bd7d4bd64732af4bf3a67f367c27df8520ad7e230c5817b8ff485864d80242b9"
+
+[[package]]
+name = "libloading"
+version = "0.5.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f2b111a074963af1d37a139918ac6d49ad1d0d5e47f72fd55388619691a7d753"
+dependencies = [
+ "cc",
+ "winapi 0.3.9",
+]
 
 [[package]]
 name = "libloading"
@@ -413,7 +454,7 @@ version = "0.0.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "62bb907fe88d54d8d9ce32a3cceab4218ed2f6b7d35617cafe9adf84e43919cb"
 dependencies = [
- "libc",
+ "libc 0.2.73",
 ]
 
 [[package]]
@@ -428,7 +469,7 @@ version = "0.7.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6585fd95e7bb50d6cc31e20d4cf9afb4e2ba16c5846fc76793f11218da9c475b"
 dependencies = [
- "libc",
+ "libc 0.2.73",
  "winapi 0.3.9",
 ]
 
@@ -443,7 +484,7 @@ dependencies = [
  "fuchsia-zircon-sys",
  "iovec",
  "kernel32-sys",
- "libc",
+ "libc 0.2.73",
  "log",
  "miow",
  "net2",
@@ -494,7 +535,7 @@ checksum = "d1730ee2e3de41c3321160a6da815f008c4006d71b095880ea50e17cf52332b8"
 dependencies = [
  "android_log-sys",
  "lazy_static",
- "libc",
+ "libc 0.2.73",
  "log",
  "ndk",
  "ndk-sys",
@@ -513,7 +554,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2ba7c918ac76704fb42afcbbb43891e72731f3dcca3bef2a19786297baf14af7"
 dependencies = [
  "cfg-if",
- "libc",
+ "libc 0.2.73",
  "winapi 0.3.9",
 ]
 
@@ -526,7 +567,7 @@ dependencies = [
  "bitflags",
  "cc",
  "cfg-if",
- "libc",
+ "libc 0.2.73",
  "void",
 ]
 
@@ -606,7 +647,7 @@ checksum = "d58c7c768d4ba344e3e8d72518ac13e259d7c7ade24167003b8488e10b6740a3"
 dependencies = [
  "cfg-if",
  "cloudabi",
- "libc",
+ "libc 0.2.73",
  "redox_syscall",
  "smallvec",
  "winapi 0.3.9",
@@ -675,7 +716,7 @@ version = "0.3.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0a441a7a6c80ad6473bd4b74ec1c9a4c951794285bf941c2126f607c72e48211"
 dependencies = [
- "libc",
+ "libc 0.2.73",
 ]
 
 [[package]]
@@ -688,6 +729,7 @@ checksum = "41cc0f7e4d5d4544e8861606a285bb08d3e70712ccc7d2b84d7c0ccfaf4b05ce"
 name = "rust-opendingux-test"
 version = "0.1.0"
 dependencies = [
+ "egl",
  "gl",
  "glutin",
 ]
@@ -740,7 +782,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5a9e7e0f2bfae24d8a5b5a66c5b257a83c7412304311512a0c054cd5e619da11"
 dependencies = [
  "lazy_static",
- "libc",
+ "libc 0.2.73",
 ]
 
 [[package]]
@@ -838,7 +880,7 @@ dependencies = [
  "bitflags",
  "calloop",
  "downcast-rs",
- "libc",
+ "libc 0.2.73",
  "mio",
  "nix",
  "wayland-commons",
@@ -946,7 +988,7 @@ dependencies = [
  "dispatch",
  "instant",
  "lazy_static",
- "libc",
+ "libc 0.2.73",
  "log",
  "mio",
  "mio-extras",
@@ -980,7 +1022,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2bf981e3a5b3301209754218f962052d4d9ee97e478f4d26d4a6eced34c1fef8"
 dependencies = [
  "lazy_static",
- "libc",
+ "libc 0.2.73",
  "maybe-uninit",
  "pkg-config",
 ]

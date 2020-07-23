@@ -19,6 +19,7 @@
                 "cargo check",
                 "all • all • all",
                 "package",
+                "deploy",
             ],
             "group": { "kind": "build", "isDefault": true }
         },
@@ -146,6 +147,11 @@
             "label":        "package",
             "linux":        { "command": "./scripts/package.sh" },
             "windows":      { "command": "bash --login -c \"./scripts/package.sh\"" },
+            "presentation": { "group": "package" },
+        },
+        {
+            "label":        "deploy",
+            "windows":      { "command": "scripts\\deploy" },
             "presentation": { "group": "package" },
         },
     ],
