@@ -1,0 +1,2 @@
+[target.mipsel-gcw0-linux-uclibc.dependencies.std]
+features = []

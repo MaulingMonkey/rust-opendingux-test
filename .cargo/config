@@ -1,9 +1,18 @@
+# https://doc.rust-lang.org/cargo/reference/config.html
+
 [target.mipsel-unknown-linux-musl]
 linker = "mipsel-linux-gcc"
 rustflags = [
     # NOTE: These need to be linked pretty late to resolve for the rust stdlib, hence why they're in here instead of in main.rs
     "-C", "link-args=-lpthread",
     "-C", "link-args=-ldl",
+]
+
+[target.mipsel-gcw0-linux-uclibc]
+rustflags = [
+    "-C", "link-args=-L/mnt/c/local/rust-opendingux-test-wsl/gcw0-stubs", # XXX: FIXME
+    "-C", "link-args=-lgcw0-stubs", # provide fminf/fmaxf for rust intrinsics to link against
+    "-C", "link-args=-lm",          # resolve fmin/fmax for gcw0-stubs to link against (optional if it's a dynamic lib)
 ]
 
 [target.mipsel-unknown-linux-gnu]

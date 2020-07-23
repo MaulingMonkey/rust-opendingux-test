@@ -1,2 +1,4 @@
 /target
+/gcw0-stubs/*.a
+/gcw0-stubs/*.o
 opendingux-gcw0-*.tar.bz2

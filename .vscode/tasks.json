@@ -16,6 +16,7 @@
             "dependsOrder": "sequence",
             "dependsOn": [
                 "install • all",
+                "cargo check",
                 "all • all • all",
             ],
             "group": { "kind": "build", "isDefault": true }
@@ -49,18 +50,28 @@
         },
 
         {
+            "label":        "cargo check",
+            "command":      "cargo check",
+            "presentation": { "group": "check" },
+        },
+        {
             "label": "all • all • all",
             "dependsOn": [
                 //"stable • debug • gnu",   // missing symbols: `__stack_chk_fail`, `__stack_chk_guard`, `__snprintf_chk`
-                "stable • debug • musl",
+                //"stable • debug • musl",
                 //"stable • release • gnu", // missing symbols: `__stack_chk_fail`, `__stack_chk_guard`, `__snprintf_chk`
-                "stable • release • musl",
-                "nightly • debug • gnu",
-                "nightly • debug • musl",
-                "nightly • release • gnu",
-                "nightly • release • musl",
+                //"stable • release • musl",
+                //"nightly • debug • gnu",
+                //"nightly • debug • musl",
+                //"nightly • release • gnu",
+                //"nightly • release • musl",
+                "nightly-2020-06-15 • debug • uclibc",
+                "nightly-2020-06-15 • release • uclibc",
             ]
         },
+
+
+
         {
             "label": "stable • debug • gnu",
             "linux":        { "command": "PATH=/opt/gcw0-toolchain/usr/bin:${PATH} cargo +stable build --offline --target-dir=target/stable-gnu --target=mipsel-unknown-linux-gnu --package rust-opendingux-test" },
@@ -85,6 +96,9 @@
             "windows":      { "command": "bash --login -c \"PATH=/opt/gcw0-toolchain/usr/bin:${PATH} cargo +stable build --offline --target-dir=target/stable-musl --target=mipsel-unknown-linux-musl --release --package rust-opendingux-test" },
             "presentation": { "group": "build" }
         },
+
+
+
         {
             "label": "nightly • debug • gnu",
             "linux":        { "command": "PATH=/opt/gcw0-toolchain/usr/bin:${PATH} cargo +nightly build --offline --target-dir=target/nightly-gnu --target=mipsel-unknown-linux-gnu --package rust-opendingux-test" },
@@ -108,6 +122,21 @@
             "linux":        { "command": "PATH=/opt/gcw0-toolchain/usr/bin:${PATH} cargo +nightly build --offline --target-dir=target/nightly-musl --target=mipsel-unknown-linux-musl --release --package rust-opendingux-test" },
             "windows":      { "command": "bash --login -c \"PATH=/opt/gcw0-toolchain/usr/bin:${PATH} cargo +nightly build --offline --target-dir=target/nightly-musl --target=mipsel-unknown-linux-musl --release --package rust-opendingux-test" },
             "presentation": { "group": "build" }
+        },
+
+
+
+        {
+            "label": "nightly-2020-06-15 • debug • uclibc",
+            "linux":        { "command": "RUST_TARGET_PATH=$(pwd) RUSTUP_TOOLCHAIN=nightly-2020-06-15 xargo build --offline --target-dir=target/nightly-uclibc --target=mipsel-gcw0-linux-uclibc --package rust-opendingux-test" },
+            "windows":      { "command": "bash --login -c \"RUST_TARGET_PATH=$(pwd) RUSTUP_TOOLCHAIN=nightly-2020-06-15 xargo build --offline --target-dir=target/nightly-uclibc --target=mipsel-gcw0-linux-uclibc --package rust-opendingux-test" },
+            "presentation": { "group": "build" },
+        },
+        {
+            "label": "nightly-2020-06-15 • release • uclibc",
+            "linux":        { "command": "RUST_TARGET_PATH=$(pwd) RUSTUP_TOOLCHAIN=nightly-2020-06-15 xargo build --offline --target-dir=target/nightly-uclibc --target=mipsel-gcw0-linux-uclibc --release --package rust-opendingux-test" },
+            "windows":      { "command": "bash --login -c \"RUST_TARGET_PATH=$(pwd) RUSTUP_TOOLCHAIN=nightly-2020-06-15 xargo build --offline --target-dir=target/nightly-uclibc --target=mipsel-gcw0-linux-uclibc --release --package rust-opendingux-test" },
+            "presentation": { "group": "build" },
         },
     ],
 }

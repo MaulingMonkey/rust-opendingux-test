@@ -1,0 +1,78 @@
+{
+  "arch": "mips",
+  "cpu": "mips32r2",
+  "crt-objects-fallback": "musl",
+  "crt-static-respected": true,
+  "data-layout": "e-m:m-p:32:32-i8:8:32-i16:16:32-i64:64-n32-S64",
+  "dynamic-linking": true,
+  "env": "gnu",
+  "executables": true,
+  "features": "+mips32r2",
+  "has-elf-tls": true,
+  "has-rpath": true,
+  "is-builtin": false,
+  "linker": "/opt/gcw0-toolchain/usr/bin/mipsel-linux-gcc",
+  "linker-flavor": "gcc",
+  "linker-is-gnu": true,
+  "llvm-target": "mipsel-gcw0-linux-uclibc",
+  "max-atomic-width": 32,
+  "os": "linux",
+  "position-independent-executables": true,
+  "post-link-objects-fallback": {
+    "dynamic-dylib": [
+      "crtn.o"
+    ],
+    "dynamic-nopic-exe": [
+      "crtn.o"
+    ],
+    "dynamic-pic-exe": [
+      "crtn.o"
+    ],
+    "static-dylib": [
+      "crtn.o"
+    ],
+    "static-nopic-exe": [
+      "crtn.o"
+    ],
+    "static-pic-exe": [
+      "crtn.o"
+    ]
+  },
+  "pre-link-args": {
+    "gcc": [
+      "-Wl,--as-needed",
+      "-Wl,-z,noexecstack"
+    ]
+  },
+  "pre-link-objects-fallback": {
+    "dynamic-dylib": [
+      "crti.o"
+    ],
+    "dynamic-nopic-exe": [
+      "crt1.o",
+      "crti.o"
+    ],
+    "dynamic-pic-exe": [
+      "Scrt1.o",
+      "crti.o"
+    ],
+    "static-dylib": [
+      "crti.o"
+    ],
+    "static-nopic-exe": [
+      "crt1.o",
+      "crti.o"
+    ],
+    "static-pic-exe": [
+      "rcrt1.o",
+      "crti.o"
+    ]
+  },
+  "relro-level": "full",
+  "target-c-int-width": "32",
+  "target-endian": "little",
+  "target-family": "unix",
+  "target-mcount": "_mcount",
+  "target-pointer-width": "32",
+  "vendor": "gcw0"
+}
