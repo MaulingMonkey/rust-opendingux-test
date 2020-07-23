@@ -28,4 +28,4 @@ rustup component list --installed --toolchain=nightly-2020-06-15 | grep rust-src
 
 echo ""
 echo "Checking misc. tools..."
-xargo --version 2>&1 | grep "xargo 0.3." || cargo install xargo
+xargo --version 2>&1 | grep "xargo 0.3." || cargo install xargo --version "^0.3"
