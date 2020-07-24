@@ -9,31 +9,52 @@ rustc +nightly -Z unstable-options --print target-spec-json --target=mipsel-unkn
 ## Modifications
 
 ```diff
-   Not currently done:  This is "correct" but breaks the heck out of nix's libc imports (nix is a glutin dependency)
-   TODO:  Fix nix, profit?
 -  "env": "gnu",
 +  "env": "uclibc",
+```
+The impact of this is a bit complicated.
+On the one hand, the `nix` package is broken as heck on `target_env="uclibc"`.
+`nix` imports a bunch of libc stuff which is just plain missing on uclibc, and thus fails to build.
+(TODO: fix nix?)
+On the other hand, `target_env="gnu"` is wrong and breaks `std::env::args()`!
+Specifically, `init` [no longer](https://github.com/rust-lang/rust/blob/0820e54a8ad7795d7b555b37994f43cfe62356d4/src/libstd/sys/unix/args.rs#L102) calls `really_init`.
+uclibc does call `.init_array.*` as [defined by rust's stdlib](https://github.com/rust-lang/rust/blob/0820e54a8ad7795d7b555b37994f43cfe62356d4/src/libstd/sys/unix/args.rs#L106-L126),
+but the parameters are different or bogus!
+Specifically:
+* `argc` is either uninitialized or a pointer (large varying values per run)
+* `argv` is either uninitialized or 0/nullptr (only ever observed to be 0 on my RG350M)
+* `_envp`... heck if I know, I didn't check.
 
-   Apparently gcw0 uses hard floats, whereas the default mipsel-unknown-linux-musl target uses soft floats.
+
+
+```diff
 -  "features": "+mips32r2,+softfloat",
 +  "features": "+mips32r2",
+```
+Apparently gcw0 uses hard floats, whereas the default mipsel-unknown-linux-musl target uses soft floats.
 
-   Duh.
+```diff
 -  "is-builtin": true,
 +  "is-builtin": false,
+```
+Duh.
 
-   We can hardcode the entire path and that's sufficient, no need to modify PATH
+```diff
 +  "linker": "/opt/gcw0-toolchain/usr/bin/mipsel-linux-gcc",
+```
+gcw0-toolchain binaries assume it's been installed to `/opt/gcw0-toolchain`, so we might as well make the target assume the same.
 
-   Seems... more accurate, based on gcw0-toolchain layout?
+```diff
 -  "llvm-target": "mipsel-unknown-linux-gcc",
 +  "llvm-target": "mipsel-gcw0-linux-uclibc",
+```
+Seems... more accurate, based on gcw0-toolchain layout?  Not entirely sure about the impact of changing "vendor" from "unknown' to "gcw0".
 
-   Seems harmless
+```diff
 -  "vendor": "unknown"
 +  "vendor": "gcw0"
 ```
-
+Ditto
 
 
 # Xargo.toml
@@ -63,6 +84,7 @@ rustc +nightly -Z unstable-options --print target-spec-json --target=mipsel-unkn
 | `RUST_TARGET_PATH`    | workspace                     | `xargo` can't find target spec json files otherwise (workspace related?)
 | `RUSTUP_TOOLCHAIN`    | `nightly-2020-06-15`          | `xargo +nightly-2020-06-15` sadly doesn't work
 | `PATH`                | `/opt/gcw0-toolchain/usr/bin` | Less necessary now that we have a target json spec
+| `XARGO_RUST_SRC`      | `~/.rustup/toolchains/nightly-2020-06-15-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src` | Make a copy of that folder and modify it if you want to tweak `std`
 
 ## .cargo/config
 
