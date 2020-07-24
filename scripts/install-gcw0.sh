@@ -31,6 +31,14 @@ if [ gcw0-stubs/libgcw0-stubs.c -nt gcw0-stubs/libgcw0-stubs.a ]; then
     /opt/gcw0-toolchain/usr/bin/mipsel-linux-gcc -fPIC -O3 -c libgcw0-stubs.c -o libgcw0-stubs.o || exit 1
     /opt/gcw0-toolchain/usr/bin/mipsel-linux-ar rcv libgcw0-stubs.a libgcw0-stubs.o || exit 1
     #/opt/gcw0-toolchain/usr/bin/mipsel-linux-gcc -shared -fPIC -O3 libgcw0-stubs.c -o libgcw0-stubs.so || exit 1
+    echo ""
+    echo "######################################################################"
+    echo "#                                                                    #"
+    echo "#  Need to update to /opt/gcw0-toolchain, sudo may need a password   #"
+    echo "#                                                                    #"
+    echo "######################################################################"
+    echo ""
+    sudo cp libgcw0-stubs.a /opt/gcw0-toolchain/rust-gcw0-stubs.a
     popd >/dev/null
 fi
 

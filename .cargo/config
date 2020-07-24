@@ -10,8 +10,7 @@ rustflags = [
 
 [target.mipsel-gcw0-linux-uclibc]
 rustflags = [
-    "-C", "link-args=-Lgcw0-stubs",
-    "-C", "link-args=-lgcw0-stubs", # provide fminf/fmaxf for rust intrinsics to link against
+    "-C", "link-args=-l:/opt/gcw0-toolchain/rust-gcw0-stubs.a", # provide fminf/fmaxf for rust intrinsics to link against
     "-C", "link-args=-lm",          # resolve fmin/fmax for gcw0-stubs to link against (optional if it's a dynamic lib)
 ]
 
