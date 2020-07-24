@@ -12,11 +12,23 @@ the purpouse of low-spec handheld Rust game development without signing a bunch 
 2.  Install [VS Code](https://code.visualstudio.com/)
 3.  Open this directory in VS Code
 4.  Optionally install workspace recommended VS Code extensions
-5.  Run the `default` build task (`Ctrl`+`Shift`+`B`).<br>
-    <b>May require `sudo` password on first run</b> (to auto-install dependencies)
-6.  Copy `target/package.opk` into your device SD card's `APPS` folder
-7.  See the launcher icons in the new `rust` category
-8.  Profit!
+5.  Connect the RG350M via USB (see `Debugging the USB Connection` bellow)
+6.  Run the `default` build task (`Ctrl`+`Shift`+`B`).<br>
+    <b>May require `sudo` password</b> (to auto-install dependencies / rust stubs)
+7.  The build should have auto-deployed.  If you couldn't get your USB connection working, however, you can manually copy `target/package.opk` onto your device's SD card, in the `APPS` folder.
+8.  Otherwise, see the apps in the new `rust` category on your RG350M!
+9.  Profit!
+
+## Debugging the USB Connection
+
+*   If you can ping/telnet/ssh into `10.1.1.2` as root, you're good to go!
+*   Use the `USB2`/`USB/DC` port, not `USB1`/`OTG`
+*   The cable that came with your RG350M may not work properly for data.  I had to use another cable, even though Windows half-recognized the USB connection.
+*   Windows 10's preinstalled "Remote NDIS" driver should just work (tm).
+*   On the device, run `settings > Network`.  `scripts/deploy.sh` assumes:
+    * IP address: `10.1.1.2`
+    * Username: `root`
+    * Password: *none* (not actually network connected)
 
 ## Installed Dependencies
 
