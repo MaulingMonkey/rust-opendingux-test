@@ -151,7 +151,8 @@
         },
         {
             "label":        "deploy",
-            "windows":      { "command": "scripts\\deploy" },
+            "linux":        { "command": "./scripts/deploy.sh" },
+            "windows":      { "command": "bash --login -c \"./scripts/deploy.sh\"" },
             "presentation": { "group": "deploy" },
         },
     ],
