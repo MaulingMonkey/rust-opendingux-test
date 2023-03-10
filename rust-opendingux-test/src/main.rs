@@ -70,24 +70,42 @@ fn main() {
 fn main() {
     println!("{} {}", env!("CARGO_PKG_NAME"), env!("CARGO_PKG_VERSION"));
 
-    use glutin::event::{Event, KeyboardInput, VirtualKeyCode, WindowEvent};
-    use glutin::event_loop::{ControlFlow, EventLoop};
-    use glutin::window::{Fullscreen, WindowBuilder};
+    use std::convert::TryInto;
+
+    use raw_window_handle::HasRawWindowHandle;
+
+    use glutin_winit::GlWindow;
+
+    use glutin::prelude::*;
+    use glutin::context::ContextAttributesBuilder;
+    use glutin::display::GetGlDisplay;
+
+    use winit::event::{Event, KeyboardInput, VirtualKeyCode, WindowEvent};
+    use winit::event_loop::{ControlFlow, EventLoop};
+    use winit::window::{Fullscreen, WindowBuilder};
 
     let el = EventLoop::new();
-    let window_builder = WindowBuilder::new().with_title("Rust OpenDingux Test").with_fullscreen(Some(Fullscreen::Borderless(el.available_monitors().next().expect("MonitorHandle"))));
-    let context_wrapper = unsafe { glutin::ContextBuilder::new().build_windowed(window_builder, &el).expect("WindowedContext").make_current().expect("ContextWrapper") };
-    
-    gl::ClearColor::load_with(|proc| context_wrapper.get_proc_address(proc) as _);
-    gl::Clear     ::load_with(|proc| context_wrapper.get_proc_address(proc) as _);
-    
+    let window_builder = WindowBuilder::new().with_title("Rust OpenDingux Test").with_fullscreen(Some(Fullscreen::Borderless(None)));
+    let (window, gl_config) = glutin_winit::DisplayBuilder::new().with_window_builder(Some(window_builder)).build(&el, <_>::default(), |mut cfgs| cfgs.next().unwrap()).expect("DisplayBuilder::build");
+    let window = window.expect("window");
+    let gl_surface = unsafe { gl_config.display().create_window_surface(&gl_config, &window.build_surface_attributes(<_>::default())) }.expect("create_window_surface");
+    let gl_context = unsafe { gl_config.display().create_context(&gl_config, &ContextAttributesBuilder::new().build(Some(window.raw_window_handle()))) }.expect("create_context");
+    let gl_context = gl_context.make_current(&gl_surface).expect("make_current");
+
+    gl::ClearColor::load_with(|proc| gl_config.display().get_proc_address(&std::ffi::CString::new(proc).unwrap()) as _);
+    gl::Clear     ::load_with(|proc| gl_config.display().get_proc_address(&std::ffi::CString::new(proc).unwrap()) as _);
+
     el.run(move |event, _, control_flow| {
         *control_flow = ControlFlow::Wait;
-    
+
         match event {
             Event::WindowEvent { event, .. } => match event {
                 WindowEvent::CloseRequested => { *control_flow = ControlFlow::Exit; },
-                WindowEvent::Resized(size) => context_wrapper.resize(size),
+                WindowEvent::Resized(size) => {
+                    if let (Ok(width), Ok(height)) = (size.width.try_into(), size.height.try_into()) {
+                        gl_surface.resize(&gl_context, width, height);
+                    }
+                },
                 WindowEvent::KeyboardInput { input: KeyboardInput { virtual_keycode: Some(virtual_keycode), state, .. }, .. } => match (virtual_keycode, state) {
                     (VirtualKeyCode::Escape, _) => { *control_flow = ControlFlow::Exit },
                     _ => {},
@@ -96,7 +114,7 @@ fn main() {
             },
             Event::RedrawRequested(_) => {
                 render();
-                context_wrapper.swap_buffers().expect("swap_buffers");
+                gl_surface.swap_buffers(&gl_context).expect("swap_buffers");
             },
             _ => {},
         }

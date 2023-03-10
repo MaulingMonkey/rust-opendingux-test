@@ -14,4 +14,7 @@ gl                      = "0.14"
 egli                    = "0.5.0"
 
 [target.'cfg(not(target_vendor = "gcw0"))'.dependencies]
-glutin                  = "0.24"
+glutin                  = "0.30"
+glutin-winit            = "0.3"
+raw-window-handle       = "0.5"
+winit                   = "0.28"
