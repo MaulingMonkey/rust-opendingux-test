@@ -100,5 +100,15 @@
             "windows":      { "command": "bash --login -c \"./scripts/deploy.sh\"" },
             "presentation": { "group": "deploy" },
         },
+
+
+
+        {
+            "label":        "open repository",
+            "windows":      { "command": "start \"\"    \"https://github.com/MaulingMonkey/rust-opendingux-test\"" },
+            "linux":        { "command": "xdg-open      \"https://github.com/MaulingMonkey/rust-opendingux-test\"" },
+            "osx":          { "command": "open          \"https://github.com/MaulingMonkey/rust-opendingux-test\"" },
+            "presentation": { "clear": true, "panel": "shared", "reveal": "silent" },
+        },
     ],
 }
